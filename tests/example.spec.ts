@@ -11,7 +11,7 @@ test('get started link', async ({ page }) => {
   await expect(page).toHaveURL(/.*intro/);
 });
 
-test('check Java page', async ({ page }) => {
+test.only('check Java page', async ({ page }) => {
   await page.goto('https://playwright.dev/');
   await page.getByRole('link', { name: 'Get started' }).click();
   await page.getByRole('button', { name: 'Node.js' }).hover();
@@ -23,3 +23,17 @@ test('check Java page', async ({ page }) => {
   await expect(page.getByText(javaDescription)).toBeVisible();
 });
 
+/*
+test(`Check the text of the Java page`, async ({ page }) => {
+  
+  await page.goto(`https://playwright.dev`);
+
+  await page.getByRole(`link`, {name: `Get started`}).click();
+
+  await page.getByRole(`button`, {name: `Node.js`}).hover();
+  await page.getByText(`Java`, {exact: true}).click();
+  
+  await expect(page).toHaveURL(`https://playwright.dev/java/docs/intro`);
+  await expect((page).getByText(`Install Playwright`, {exact: true})).not.toBeVisible();
+});
+*/
